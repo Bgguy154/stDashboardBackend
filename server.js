@@ -7,7 +7,17 @@ const winston = require("winston");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://st-dashboard-frontend.vercel.app",
+      "http://localhost:3000"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true
+  })
+);
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -449,6 +459,5 @@ function formatUptime(seconds) {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+module.exports = app;
+
