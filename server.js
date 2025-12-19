@@ -244,3 +244,5 @@ app.listen(PORT, async () => {
     console.error("Failed to start server:", error);
   }
 });
+
+module.exports = app; // Required for Vercel serverless deployment
